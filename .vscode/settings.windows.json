@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "iosfwd": "cpp",
+        "iterator": "cpp",
+        "numeric": "cpp",
+        "ostream": "cpp"
+    },
+    "files.exclude": {
+        ".mypy_cache": true,
+        "**/*.exe": true,
+    }
+}

@@ -1,0 +1,89 @@
+{
+	// Place your usaco_trainings workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Minimal template for USACO training in Python3": {
+		"prefix": "setup",
+		"scope": "python",
+		"body": [
+			"\"\"\"",
+			"ID: totheso1",
+			"LANG: PYTHON3",
+			"TASK: $1",
+			"\"\"\"",
+			"",
+			"fin = open(\"$1.in\", \"r\")",
+			"fout = open(\"$1.out\", \"w\")",
+			"",
+			"",
+			"def fprint(*args, **kwargs):",
+			"    print(*args, file=fout, **kwargs)",
+			"",
+			"",
+			"# Code start",
+			"$0",
+			"# Code end",
+			""
+		],
+		"description": "Minimal template for USACO training in Python3"
+	},
+	"Minimal template for USACO training in C++14": {
+		"prefix": "setup",
+		"scope": "cpp",
+		"body": [
+			"/*",
+			"ID: totheso1",
+			"LANG: C++14",
+			"TASK: $1",
+			"*/",
+			"",
+			"#include <fstream>",
+			"#include <iterator>",
+			"",
+			"using namespace std;",
+			"",
+			"static ifstream fin(\"$1.in\");",
+			"static ofstream fout(\"$1.out\");",
+			"",
+            "template <typename T>",
+            "T fin_get() {",
+            "    return *istream_iterator<T>(fin);",
+            "}",
+            "",
+            "template <typename C>",
+            "C fin_get_collection(int size) {",
+            "    C ret;",
+            "    copy_n(istream_iterator<typename C::value_type>(fin), size,",
+            "           back_inserter(ret));",
+            "    return ret;",
+            "}",
+			"",
+			"int main() {",
+			"    $0",
+			"}",
+			""
+		],
+		"description": "Minimal template for USACO training in C++14"
+	},
+	"Stream reader": {
+		"scope": "cpp",
+		"prefix": "read",
+		"body": [
+			"stream_get<$1>(fin)$0"
+		],
+		"description": "Stream reader"
+	}
+}
