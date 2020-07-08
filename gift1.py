@@ -8,7 +8,7 @@ fin = open("gift1.in", "r")
 fout = open("gift1.out", "w")
 
 
-def fprint(*args, **kwargs):
+def fprint(*args, **kwargs) -> None:
     print(*args, file=fout, **kwargs)
 
 

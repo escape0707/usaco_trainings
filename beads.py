@@ -8,7 +8,7 @@ fin = open("beads.in", "r")
 fout = open("beads.out", "w")
 
 
-def fprint(*args, **kwargs):
+def fprint(*args, **kwargs) -> None:
     print(*args, file=fout, **kwargs)
 
 

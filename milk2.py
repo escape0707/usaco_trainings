@@ -8,7 +8,7 @@ fin = open("milk2.in", "r")
 fout = open("milk2.out", "w")
 
 
-def fprint(*args, **kwargs):
+def fprint(*args, **kwargs) -> None:
     print(*args, file=fout, **kwargs)
 
 

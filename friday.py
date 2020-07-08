@@ -8,7 +8,7 @@ fin = open("friday.in", "r")
 fout = open("friday.out", "w")
 
 
-def fprint(*args, **kwargs):
+def fprint(*args, **kwargs) -> None:
     print(*args, file=fout, **kwargs)
 
 

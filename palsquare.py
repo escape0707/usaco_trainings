@@ -10,7 +10,7 @@ fin = open("palsquare.in", "r")
 fout = open("palsquare.out", "w")
 
 
-def fprint(*args, **kwargs):
+def fprint(*args, **kwargs) -> None:
     print(*args, file=fout, **kwargs)
 
 
@@ -39,6 +39,8 @@ def base_repr(number: int, base: int = 2, padding: int = 0) -> str:
 BASE = int(fin.read())
 for num in range(1, 301):
     square = base_repr(num * num, BASE)
-    if all(map(operator.eq, itertools.islice(square, len(square) >> 1), reversed(square))):
+    if all(
+        map(operator.eq, itertools.islice(square, len(square) >> 1), reversed(square))
+    ):
         fprint(base_repr(num, BASE), square)
 # Code end

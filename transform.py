@@ -10,7 +10,7 @@ fin = open("transform.in", "r")
 fout = open("transform.out", "w")
 
 
-def fprint(*args, **kwargs):
+def fprint(*args, **kwargs) -> None:
     print(*args, file=fout, **kwargs)
 
 
