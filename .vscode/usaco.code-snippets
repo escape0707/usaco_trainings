@@ -58,6 +58,8 @@
       "static ifstream fin(\"$1.in\");",
       "static ofstream fout(\"$1.out\");",
       "",
+      "#define endl '\\n'",
+      "",
       "template <typename T>",
       "T fin_get() {",
       "  return *istream_iterator<T>(fin);",

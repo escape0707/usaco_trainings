@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "clang++ build active file",
+      "command": "clang++",
+      "args": [
+        "-g",
+        "${relativeFile}",
+        "-o",
+        "${relativeFileDirname}/${fileBasenameNoExtension}.exe",
+        "-Weverything",
+        "-Wno-exit-time-destructors",
+        "-Wno-global-constructors",
+        "-Wno-c++98-compat"
+      ],
+      "problemMatcher": {
+        "base": "$gcc"
+      },
+      "presentation": {
+        "clear": true,
+        "focus": true,
+        "panel": "shared"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "windows": {
+        "args": [
+          "--target=x86_64-pc-windows-gnu",
+          "-g",
+          "${relativeFile}",
+          "-o",
+          "${relativeFileDirname}/${fileBasenameNoExtension}.exe",
+          "-Weverything",
+          "-Wno-exit-time-destructors",
+          "-Wno-global-constructors",
+          "-Wno-c++98-compat"
+        ]
+      }
+    }
+  ]
+}
