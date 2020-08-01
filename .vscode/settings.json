@@ -58,5 +58,8 @@
     "typeinfo": "cpp",
     "variant": "cpp",
     "cfloat": "cpp"
-  }
+  },
+  "cSpell.words": [
+    "fprint"
+  ]
 }
