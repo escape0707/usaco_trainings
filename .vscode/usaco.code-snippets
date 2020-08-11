@@ -69,7 +69,7 @@
       "}",
       "",
       "template <typename C>",
-      "C fin_get_collection(int size) {",
+      "C fin_get_collection(const int size) {",
       "  C ret;",
       "  copy_n(istream_iterator<typename C::value_type>(fin), size,",
       "         back_inserter(ret));",
