@@ -31,13 +31,13 @@ C fin_get_collection(int size) {
   return ret;
 }
 
-int hole_count;
-vector<int> right_side;
+static int hole_count;
+static vector<int> right_side;
 
-bool could_get_stuck(const vector<pair<int, int>> &pairing) {
+static bool could_get_stuck(const vector<pair<int, int>> &pairing) {
   vector<int> entered_from_collection(hole_count, -1);
   vector<int> exit_collection(hole_count, -1);
-  for (const pair<int, int> &pair : pairing) {
+  for (const auto &pair : pairing) {
     int hole_a = pair.first, hole_b = pair.second;
     exit_collection[hole_a] = hole_b;
     exit_collection[hole_b] = hole_a;
@@ -58,7 +58,7 @@ bool could_get_stuck(const vector<pair<int, int>> &pairing) {
   return false;
 }
 
-int dfs() {
+static int dfs() {
   static vector<bool> in_pairing_collection(hole_count, false);
   static vector<pair<int, int>> pairing;
 
