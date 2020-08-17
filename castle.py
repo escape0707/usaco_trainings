@@ -51,21 +51,22 @@ def solve_components() -> None:
         component_id_by_index[i][j] = component_cnt
         component_size[component_cnt] += 1
         for bitmask, (direction_x, direction_y) in zip(encode, direction_collection):
-            if ~castle_map[i][j] & bitmask:
+            no_wall_on_direction = ~castle_map[i][j] & bitmask != 0
+            if no_wall_on_direction:
                 next_i, next_j = i + direction_x, j + direction_y
                 if component_id_by_index[next_i][next_j] == -1:
                     flood_fill(next_i, next_j)
             # else:
             #    do_component_adjacent_record_here()
 
-    component_cnt = 0
+    component_cnt = -1
     component_id_by_index = [[-1] * COL_CNT for _ in range(ROW_CNT)]
     for i in range(ROW_CNT):
         for j in range(COL_CNT):
             if component_id_by_index[i][j] == -1:
+                component_cnt += 1
                 component_size.append(0)
                 flood_fill(i, j)
-                component_cnt += 1
 
     fprint(component_cnt)
     fprint(max(component_size))
@@ -89,7 +90,8 @@ def solve_wall_removal() -> None:
             for bitmask, (direction_x, direction_y), direction in zip(
                 encode, direction_collection, direction_char
             ):
-                if castle_map[i][j] & bitmask:
+                wall_on_direction = castle_map[i][j] & bitmask != 0
+                if wall_on_direction:
                     neighbor_i, neighbor_j = i + direction_x, j + direction_y
                     if neighbor_i == -1 or neighbor_j == COL_CNT:
                         continue
@@ -129,7 +131,7 @@ def print_human_readable_map() -> None:
             for bitmask, (direction_x, direction_y) in zip(
                 encode, direction_collection
             ):
-                if castle_map[i][j] & bitmask:
+                if castle_map[i][j] & bitmask != 0:
                     xx, yy = x + direction_x, y + direction_y
                     res[xx - direction_y][yy + direction_x] = res[xx][yy] = res[
                         xx + direction_y
