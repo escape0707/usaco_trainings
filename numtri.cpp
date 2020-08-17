@@ -34,7 +34,7 @@ int main() {
   const int number_of_rows = fin_get<int>();
   vector<int> dp(number_of_rows, 0);
   for (int i = 0; i < number_of_rows; ++i) {
-    for (int j = i; j >= 0; --j) {
+    for (int j = i; j != -1; --j) {
       const int num = fin_get<int>();
       dp[j] = max(dp[j], dp[j] + num);
       if (j > 0) {
