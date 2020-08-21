@@ -30,14 +30,10 @@ C fin_get_collection(const int size) {
   return ret;
 }
 
-constexpr int MAX_CAPACITY = 20;
-
-static array<int, 3> CAPACITY_COLLECTION;
+static array<int, 3> capacity_collection;
 static array<int, 3> milk;
-static array<array<array<bool, MAX_CAPACITY + 1>, MAX_CAPACITY + 1>,
-             MAX_CAPACITY + 1>
-    tried;
-static array<bool, MAX_CAPACITY + 1> possibilities_collection;
+static vector<vector<vector<bool>>> tried;
+static vector<bool> possibilities_collection;
 
 static void dfs() {
   const int a = milk[0];
@@ -55,7 +51,7 @@ static void dfs() {
       int to_bucket = -1;
       for (int &to_milk : milk) {
         ++to_bucket;
-        const int to_available = CAPACITY_COLLECTION[to_bucket] - to_milk;
+        const int to_available = capacity_collection[to_bucket] - to_milk;
         if (to_available > 0) {
           const int transfer = min(from_milk, to_available);
           from_milk -= transfer;
@@ -70,8 +66,13 @@ static void dfs() {
 }
 
 int main() {
-  copy_n(istream_iterator<int>(fin), 3, begin(CAPACITY_COLLECTION));
-  milk[2] = CAPACITY_COLLECTION[2];
+  copy_n(istream_iterator<int>(fin), 3, begin(capacity_collection));
+  tried.assign(
+      capacity_collection[0] + 1,
+      vector<vector<bool>>(capacity_collection[1] + 1,
+                           vector<bool>(capacity_collection[2] + 1, false)));
+  possibilities_collection.assign(capacity_collection[2] + 1, false);
+  milk[2] = capacity_collection[2];
   dfs();
   bool printed = false;
   int liter = -1;
