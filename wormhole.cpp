@@ -99,8 +99,7 @@ int main() {
   }
   sort(begin(hole_location_collection), end(hole_location_collection));
 
-  // right_side.clear();
-  right_side.resize(hole_count, -1);
+  right_side.assign(hole_count, -1);
   for (auto ptr_hole_a = begin(hole_location_collection),
             ptr_hole_b = ptr_hole_a + 1, e = end(hole_location_collection);
        ptr_hole_b != e; ++ptr_hole_a, ++ptr_hole_b) {
