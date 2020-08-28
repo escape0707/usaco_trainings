@@ -57,7 +57,8 @@
     "cinttypes": "cpp",
     "typeinfo": "cpp",
     "variant": "cpp",
-    "cfloat": "cpp"
+    "cfloat": "cpp",
+    "bitset": "cpp"
   },
   "cSpell.words": [
     "fprint"
