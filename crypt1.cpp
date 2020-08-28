@@ -67,7 +67,7 @@ static bool valid(int number) {
 int main() {
   int N = fin_get<int>();
   while (N--) {
-    digit_set.emplace(fin_get<int>());
+    digit_set.insert(fin_get<int>());
   }
   vector<int> multiplicand_collection = digits_Cartesian_product(digit_set, 3);
   vector<int> multiplier_collection = digits_Cartesian_product(digit_set, 2);
