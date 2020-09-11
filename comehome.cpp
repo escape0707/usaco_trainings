@@ -100,11 +100,11 @@ static pair<char, int> solve_with_basic_dijkstra() {
       return {i - PASTURE_COUNT + ord_A, dist_si};
     }
     visited[i] = true;
-    auto b = begin(shortest_back);
-    for (const int dist_ij : shortest[i]) {
-      *b = min(*b, dist_si + dist_ij);
-      ++b;
-    }
+    transform(cbegin(shortest_back), cend(shortest_back), cbegin(shortest[i]),
+              begin(shortest_back),
+              [dist_si](const int dist_sj, const int dist_ij) {
+                return min(dist_sj, dist_si + dist_ij);
+              });
   }
 }
 
