@@ -58,7 +58,8 @@
     "typeinfo": "cpp",
     "variant": "cpp",
     "cfloat": "cpp",
-    "bitset": "cpp"
+    "bitset": "cpp",
+    "ranges": "cpp"
   },
   "cSpell.words": [
     "fprint"
