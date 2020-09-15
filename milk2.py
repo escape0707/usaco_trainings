@@ -43,22 +43,22 @@ number_of_milkings = int(fin.readline())
 events = []
 for line in fin:
     start, end = map(int, line.split())
-    events.append((start, 1))
-    events.append((end, -1))
-events.sort(key=lambda event: (event[0], -event[1]))
+    events.append((start, False))
+    events.append((end, True))
+events.sort()
 
 longest_milking = longest_idling = 0
 start = end = 0
 milking = 0
-for time, change_of_people_count in events:
-    if milking == 0 and change_of_people_count == 1:
+for time, farmer_leaving in events:
+    if milking == 0 and not farmer_leaving:
         start = time
         if end:
             longest_idling = max(longest_idling, start - end)
-    if milking == 1 and change_of_people_count == -1:
+    if milking == 1 and farmer_leaving:
         end = time
         longest_milking = max(longest_milking, end - start)
-    milking += change_of_people_count
+    milking -= farmer_leaving * 2 - 1
 
 fprint(longest_milking, longest_idling)
 # Same event counting with discretization and system sort, O(NlogN), end
