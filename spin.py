@@ -21,21 +21,23 @@ wheel_collection = []
 
 def initialize() -> None:
     for line in fin:
-        int_collection = tuple(map(int, line.split()))
+        int_iter = map(int, line.split())
+        wheel_speed = next(int_iter)
+        next(int_iter)
         opaque_collection = [True] * 360
-        for start, extent in zip(
-            islice(int_collection, 2, None, 2), islice(int_collection, 3, None, 2)
-        ):
+        for start, extent in zip(int_iter, int_iter):
             for i in range(start, start + extent + 1):
                 opaque_collection[i % 360] = False
-        wheel_collection.append((int_collection[0], opaque_collection))
+        wheel_collection.append((wheel_speed, opaque_collection))
 
 
 def solve() -> None:
     for time in range(360):
         overall_opaque_collection = [False] * 360
         for wheel_speed, wheel_opaque_collection in wheel_collection:
-            for opaque, degree in zip(wheel_opaque_collection, count(time * wheel_speed)):
+            for opaque, degree in zip(
+                wheel_opaque_collection, count(time * wheel_speed)
+            ):
                 if opaque:
                     overall_opaque_collection[degree % 360] = True
         if not all(overall_opaque_collection):
