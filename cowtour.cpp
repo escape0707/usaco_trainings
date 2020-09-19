@@ -66,11 +66,10 @@ static void unite(int i, int j) {
 }
 
 template <typename C>
-static auto euclidean_distance(C a, C b) {
-  using T = typename C::value_type;
-  return sqrt(
-      inner_product(cbegin(a), cend(a), cbegin(b), 0, plus<>(),
-                    [](const T &i, const T &j) { return (i - j) * (i - j); }));
+static auto euclidean_distance(const C &a, const C &b) {
+  return sqrt(inner_product(
+      cbegin(a), cend(a), cbegin(b), 0, plus<>(),
+      [](const auto &i, const auto &j) { return (i - j) * (i - j); }));
 }
 
 static double dist(const int i, const int j) {
