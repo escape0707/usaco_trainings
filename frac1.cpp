@@ -5,6 +5,7 @@ TASK: frac1
 */
 
 #include <algorithm>
+#include <cstdlib>
 #include <fstream>
 #include <iterator>
 #include <utility>
@@ -33,15 +34,7 @@ C fin_get_collection(const int size) {
 using fraction = pair<int, int>;
 
 static int gcd(int a, int b) {
-  if (b == 0) {
-    return 0;
-  }
-  a = abs(a);
-  b = abs(b);
-  while (b != 0) {
-    a = exchange(b, a % b);
-  }
-  return a;
+  return a == 0 ? abs(b) : b == 0 ? abs(a) : gcd(b, a % b);
 }
 
 static bool coprime(const int a, const int b) {
@@ -58,7 +51,7 @@ int main() {
   for (int denominator = 1; denominator <= MAX_DENOMINATOR; ++denominator) {
     for (int numerator = 0; numerator <= denominator; ++numerator) {
       if (coprime(numerator, denominator))
-      fraction_collection.emplace_back(numerator, denominator);
+        fraction_collection.emplace_back(numerator, denominator);
     }
   }
   sort(begin(fraction_collection), end(fraction_collection), fraction_less);
